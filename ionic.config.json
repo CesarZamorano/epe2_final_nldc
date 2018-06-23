@@ -1,0 +1,8 @@
+{
+  "name": "epe2_nldc",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
