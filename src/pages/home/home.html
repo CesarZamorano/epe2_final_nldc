@@ -1,14 +1,60 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Módulo de mascotas
+      <ion-icon name="paw"></ion-icon>
     </ion-title>
+    
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+  <ion-item>
+    <ion-label floating>Nombre mascota:</ion-label>
+    <ion-input type="text" value="" [(ngModel)]="model.title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Nombre dueño :</ion-label>
+    <ion-input type="text" [(ngModel)]="model.text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Diagnóstico :</ion-label>
+    <ion-input type="text" [(ngModel)]="model.diag"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label >Ingreso :</ion-label>
+    <ion-input type="date" [(ngModel)]="model.fecha"></ion-input>
+  </ion-item>
+  <ion-item>
+    <button type="button" (click)="addMessage()" ion-button full>Registrar</button>
+  </ion-item>
+
+  <ion-card>
+    <ion-card-header>
+      <p>Desliza para opciones</p>
+    </ion-card-header>
+  </ion-card>
+  <ion-list>
+    <ion-item-sliding *ngFor="let message of messages">
+      <ion-item>
+        <h3>Nombre mascota: {{message.title}}</h3>
+        <p>Nombre dueño: {{message.text}}</p>
+        <p>Diagnóstico: {{message.diag}} </p>
+        <p>Ingreso: {{message.fecha}} </p>
+
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" (click)="deleteMessage(message.$key)">
+          <ion-icon name="ios-trash"></ion-icon>
+          Eliminar
+        </button>
+        <button ion-button color="success" (click)="updateMessage(message)">
+          <ion-icon name="ios-create"></ion-icon>
+          Editar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
 </ion-content>
